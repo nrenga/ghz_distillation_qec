@@ -1,4 +1,4 @@
-function [Xbar, Zbar] = find_logical_paulis_by_stab_msmt(Hin)
+function [Xbar, Zbar] = find_logical_paulis_by_bell_msmt(Hin)
 % Function to compute logical X and Z generators for the stabilizer code
 % defined by the parity check matrix Hin, a [(n-k) x (2n+1)] matrix;
 % each row of Hin: first 2n bits give the Pauli, last entry is sign (1 or -1)
