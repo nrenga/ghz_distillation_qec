@@ -6,6 +6,8 @@ Copyright (C) 2022 Narayanan Rengaswamy
 
 This project is licensed under the terms of the GNU Affero General Public License (AGPL) v3.0. See LICENSE.md for details.
 
+If you use this code base, please add a citation to the paper as well as the archived version on Zenodo (https://zenodo.org/record/8284904)
+
 **Scripts**:
 
 *LP_MSA_dep.m*: Standard error correction simulation of Lifted Product QLDPC code family with vanilla min-sum algorithm (MSA) decoder; this can be reinterpreted as simulating the Bell pair distillation protocol in the above paper according to the noise setting
