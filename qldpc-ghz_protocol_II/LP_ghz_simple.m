@@ -21,7 +21,7 @@ addpath('./codes/LP_QC_QLDPC');
 % Pauli Channel
 % epsilons = [1e-4; 5e-4; 1e-3; 5e-3; (0.01:0.02:0.1)'; 0.2];
 % epsilons = [(1:9)'*1e-4; 3e-3; 7e-3; 0.01 ];
-epsilons = [0.05; 0.07; 0.09; 0.1; 0.104; 0.108; 0.11];
+epsilons = [0.09; 0.1; 0.104; 0.108; 0.11];
 
 % epsilons = [0.05; 0.07; 0.09; 0.1; 0.104; 0.108; 0.11];
 % epsilons = [ 1e-4; 5e-4; 1e-3; 4e-3; 7e-3; 0.01; 0.03; 0.05; 0.09 ];
@@ -168,8 +168,8 @@ S_B(:,end) = S_B(:,end) .* (-1).^(mod(S_B(:,[(4*n+1):5*n, (n+1):2*n]) * err_B', 
 
 syndrome_B = mod(err_B * H_B(:,[(n+1):2*n, 1:n])', 2);
 
-errX_est_B = syndrome_MSA_seq_vars_5(H_B(1:r_Z,(n+1):2*n), syndrome_B(1:r_Z), 0, max_iter);
-errZ_est_B = syndrome_MSA_seq_vars_5(H_B((r_Z+1):r,1:n), syndrome_B((r_Z+1):r), 0, max_iter);
+errX_est_B = syndrome_MSA_seq_vars_5(H_B(1:r_Z,(n+1):2*n), H_Z_vn_neighbors, H_Z_cn_neighbors, syndrome_B(1:r_Z), 0, max_iter);
+errZ_est_B = syndrome_MSA_seq_vars_5(H_B((r_Z+1):r,1:n), H_X_vn_neighbors, H_X_cn_neighbors, syndrome_B((r_Z+1):r), 0, max_iter);
 err_est_B = [errX_est_B, errZ_est_B];
 
 S_B_corrected = S_B;
@@ -188,8 +188,8 @@ S_C(:,end) = S_C(:,end) .* (-1).^(mod(S_C(:,[(5*n+1):6*n, (2*n+1):3*n]) * err_C'
 
 syndrome_C = mod(err_C * H_C(:,[(n+1):2*n, 1:n])', 2);
 
-errX_est_C = syndrome_MSA_seq_vars_5(H_C(1:r_Z,(n+1):2*n), syndrome_C(1:r_Z), 0, max_iter);
-errZ_est_C = syndrome_MSA_seq_vars_5(H_C((r_Z+1):r,1:n), syndrome_C((r_Z+1):r), 0, max_iter);
+errX_est_C = syndrome_MSA_seq_vars_5(H_C(1:r_Z,(n+1):2*n), H_Z_vn_neighbors, H_Z_cn_neighbors, syndrome_C(1:r_Z), 0, max_iter);
+errZ_est_C = syndrome_MSA_seq_vars_5(H_C((r_Z+1):r,1:n), H_X_vn_neighbors, H_X_cn_neighbors, syndrome_C((r_Z+1):r), 0, max_iter);
 err_est_C = [errX_est_C, errZ_est_C];
 
 S_C_corrected = S_C;
@@ -302,8 +302,8 @@ for eps_iter = 1:length(epsilons)
         
         syndrome_B = mod(err_B * H_B(:,[(n+1):2*n, 1:n])', 2);
         
-        errX_est_B = syndrome_MSA_seq_vars_5(H_B(1:r_Z,(n+1):2*n), syndrome_B(1:r_Z), llr_X, max_iter);
-        errZ_est_B = syndrome_MSA_seq_vars_5(H_B((r_Z+1):r,1:n), syndrome_B((r_Z+1):r), llr_Z, max_iter);
+        errX_est_B = syndrome_MSA_seq_vars_5(H_B(1:r_Z,(n+1):2*n), H_Z_vn_neighbors, H_Z_cn_neighbors, syndrome_B(1:r_Z), llr_X, max_iter);
+        errZ_est_B = syndrome_MSA_seq_vars_5(H_B((r_Z+1):r,1:n), H_X_vn_neighbors, H_X_cn_neighbors, syndrome_B((r_Z+1):r), llr_Z, max_iter);
         err_est_B = [errX_est_B, errZ_est_B];
         
         S_B_corrected = S_B;
@@ -323,8 +323,8 @@ for eps_iter = 1:length(epsilons)
         
         syndrome_C = mod(err_C * H_C(:,[(n+1):2*n, 1:n])', 2);
         
-        errX_est_C = syndrome_MSA_seq_vars_5(H_C(1:r_Z,(n+1):2*n), syndrome_C(1:r_Z), llr_X, max_iter);
-        errZ_est_C = syndrome_MSA_seq_vars_5(H_C((r_Z+1):r,1:n), syndrome_C((r_Z+1):r), llr_Z, max_iter);
+        errX_est_C = syndrome_MSA_seq_vars_5(H_C(1:r_Z,(n+1):2*n), H_Z_vn_neighbors, H_Z_cn_neighbors, syndrome_C(1:r_Z), llr_X, max_iter);
+        errZ_est_C = syndrome_MSA_seq_vars_5(H_C((r_Z+1):r,1:n), H_X_vn_neighbors, H_X_cn_neighbors, syndrome_C((r_Z+1):r), llr_Z, max_iter);
         err_est_C = [errX_est_C, errZ_est_C];
         
         S_C_corrected = S_C;
