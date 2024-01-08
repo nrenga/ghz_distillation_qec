@@ -132,8 +132,8 @@ for eps_iter = 1:length(epsilons)
         s_X = mod([zeros(size(H_Z)), H_Z] * err(1,[(n+1):2*n, 1:n])', 2);
         s_Z = mod([H_X, zeros(size(H_X))] * err(1,[(n+1):2*n, 1:n])', 2);
         
-        [e_X_dec, s_X_dec, success_X_dec] = syndrome_MSA(H_Z, s_X, llr_X, max_iter);
-        [e_Z_dec, s_Z_dec, success_Z_dec] = syndrome_MSA(H_X, s_Z, llr_Z, max_iter);
+        [e_X_dec, s_X_dec, success_X_dec] = syndrome_MSA_seq_vars_5(H_Z, s_X, llr_X, max_iter);
+        [e_Z_dec, s_Z_dec, success_Z_dec] = syndrome_MSA_seq_vars_5(H_X, s_Z, llr_Z, max_iter);
         
         if (success_X_dec && success_Z_dec)
             err_dec = [e_X_dec, e_Z_dec];
