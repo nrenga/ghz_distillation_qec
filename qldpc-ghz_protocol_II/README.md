@@ -10,9 +10,9 @@ If you use this code base, please add a citation to the paper as well as the arc
 
 **Scripts**:
 
-*LP_MSA_dep.m*: Standard error correction simulation of Lifted Product QLDPC code family with vanilla min-sum algorithm (MSA) decoder; this can be reinterpreted as simulating the Bell pair distillation protocol in the above paper according to the noise setting
+*LP_MSA_dep.m*: Standard error correction simulation of Lifted Product QLDPC code family with min-sum algorithm (MSA) decoder using sequential schedule and normalization; this can be reinterpreted as simulating the Bell pair distillation protocol in the above paper according to the noise setting
 
-*LP_ghz_simple.m*: Generate performance curves for GHZ distillation with Lifted Product QLDPC code family using Protocol II in the paper; this uses the same vanilla MSA decoder which is different from the optimized decoder used for the results in the paper
+*LP_ghz_simple.m*: Generate performance curves for GHZ distillation with Lifted Product QLDPC code family using Protocol II in the paper; this uses the same MSA decoder with sequential schedule and normalization
 
 **Functions**:
 
@@ -33,6 +33,8 @@ If you use this code base, please add a citation to the paper as well as the arc
 *stabilizer_formalism_msmt.m*: Simulate the measurement of Pauli operators on a stabilizer state using the stabilizer formalism (https://arxiv.org/abs/quant-ph/9807006)
 
 *syndrome_MSA.m*: Vanilla syndrome-based min-sum algorithm (MSA) decoder
+
+*syndrome_MSA_seq_vars_5.m*: Syndrome-based min-sum algorithm (MSA) decoder using sequential schedule and normalization
 
 **Figures**:
 
